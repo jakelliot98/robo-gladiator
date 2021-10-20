@@ -11,6 +11,7 @@ function fight () {
 var playerName = window.prompt ("What is your robots name?");
 var playerHealth = 100;
 var playerAttack = 10;
+var playerMoney = 10;
 
 console.log(playerName,playerHealth, playerAttack)
 
@@ -22,9 +23,12 @@ var fight = function() {
     //tells players fight has begun
 window.alert ("Welcome to Robot Gladiators");
 
+var promptFight = window.prompt ("Would you like to FIGHT or SKIP this battle? Enter FIGHT or SKIP to choose.");
+console.log (promptFight)
+
     //Subtract the value of `playerAttack` from the value of `enemyHealth` and use that result to update the value in the `enemyHealth` variable
     //Listing the variable on the left side means we'll store data to that variable, and listing the variable on the right side means we'll use the actual value that variable holds at that moment.
-
+if (promptFight === "FIGHT" || promptFight === "fight") {
 enemyHealth = enemyHealth - playerAttack;
 
 // Log a resulting message to the console so we know that it worked.
@@ -57,9 +61,29 @@ if (playerHealth <= 0) {
 else {
     window.alert (playerName + " still has " + playerHealth + " health left.");
 }
+}
+//if player chooses to skip
+else if (promptFight === "SKIP" || promptFight === "skip") {
 
+// confirm player skip
+var confirmSkip = window.confirm ("Are you sure you would like to quit?")
+ 
+if (confirmSkip) {
+    window.alert (playerName + " has decided to skip this fight! Goodbye.");
+//subtract money for skipping
+playerMoney = playerMoney - 2;
+}
+//if no skip
+else {
+    fight();
+}
+}
+
+else {
+    window.alert ("You need to choose a valid option. Try again!");
+}
 //closing bracket on fight function...SUPER IMPORTANT KEEP EVERYTHING INSIDE THIS
 }
 
 //RUNS FIGHT FUNCTION
-fight();
+fight()

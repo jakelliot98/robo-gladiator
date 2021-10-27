@@ -1,12 +1,3 @@
-/*Creates a *function* called "fight"
-function fight () {
-    window.alert ("The fight has begun!");*/
-
-//allows user to interact with webpage to gather information AND capture the input
-//window.prompt allows for input from user into the variable named "playerName"
-//A variable is a named location for a value that gets stored in the browser's memory when a program is run.
-
-//CLOSE EVERY LINE OF CODE WITH ;!!!!!!!!!
 console.log("apple");
 
 
@@ -22,7 +13,7 @@ var enemyHealth = 50;
 var enemyAttack = 12;
 
 
-window.alert ("Welcome to Robot Gladiators");
+
 var fight = function(enemyName) {
     while(playerHealth > 0 && enemyHealth > 0) {
         
@@ -31,7 +22,7 @@ var fight = function(enemyName) {
         //if player chooses to skip
         if (promptFight === "SKIP" || promptFight === "skip") {
             // confirm player skip
-            var confirmSkip = window.confirm ("Are you sure you would like to quit?")
+            var confirmSkip = window.confirm ("Are you sure you would like to quit?");
              
             if (confirmSkip) {
                 window.alert (playerName + " has decided to skip this fight! Goodbye.");
@@ -53,7 +44,7 @@ var fight = function(enemyName) {
         
         console.log(
             playerName + " has attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining."
-            )
+            );
         
         //check enemy health
         
@@ -72,7 +63,7 @@ var fight = function(enemyName) {
         
             // Log a resulting message to the console so we know that it worked.
         
-        console.log(enemyName + " has attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.")
+        console.log(enemyName + " has attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
         
         
         //check player health
@@ -86,7 +77,7 @@ var fight = function(enemyName) {
         }
         }
         //closing bracket on fight function...SUPER IMPORTANT KEEP EVERYTHING INSIDE THIS
-    }
+    };
 
     
     //tells players fight has begun
@@ -96,7 +87,15 @@ var fight = function(enemyName) {
 
 //RUNS FIGHT FUNCTION
 for(var i = 0; i < enemyNames.length; i++) {
-    var pickedEnemyName = enemyNames[i];
-    enemyHealth = 50;
-    fight(pickedEnemyName);
+    if (playerHealth > 0) {
+        window.alert ("Welcome to Robot Gladiators! Round" + (i+1));
+        var pickedEnemyName = enemyNames[i];
+        enemyHealth = 50;
+        fight(pickedEnemyName);
+    }
+    else {
+        window.alert ("You have lost your robot... GAME OVER");
+        break
+    }
+    
 }
